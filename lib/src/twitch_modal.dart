@@ -45,34 +45,8 @@ class _TwitchModalContentState extends State<TwitchModalContent> {
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      backgroundColor: Colors.transparent,
-      contentPadding: const EdgeInsets.all(0),
-      content: ClipRRect(
-        borderRadius: BorderRadius.circular(8),
-        child: Container(
-          color: Theme.of(context).dialogBackgroundColor,
-          width: double.infinity,
-          height: MediaQuery.of(context).size.height * .8,
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.close_rounded),
-                    onPressed: () {
-                      Navigator.of(context).pop(null);
-                    },
-                  )
-                ],
-              ),
-              Expanded(
-                child: isLoading
-                    ? const Center(
-                        child: CircularProgressIndicator(),
-                      )
-                    : WebView(
+    return WebView(
+      
                         initialUrl: url,
                         javascriptMode: JavascriptMode.unrestricted,
                         onPageFinished: (String url) {
@@ -89,12 +63,6 @@ class _TwitchModalContentState extends State<TwitchModalContent> {
                             }
                           }
                         },
-                      ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+                      );
   }
 }
